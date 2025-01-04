@@ -8,16 +8,18 @@ class Program
         //longest common subsequence
         string s = "abcde";
         string t = "ace";
+        int n=s.Length;
+        int m=t.Length;
 
-        int result = LongestCommonSubSequence.LCS(s, t);
+        int result = LongestCommonSubSequence.LCSRecursive(s,t,n-1,m-1);
 
         Console.WriteLine($"Length of Longest Common Subsequence: {result}");
 
         Console.Write("Enter the Fibonacci number to calculate: ");
-        int n = int.Parse(Console.ReadLine());  
+        int input = int.Parse(Console.ReadLine());  
 
-        long results = Fibannacci.Fibonacci(n);
-        Console.WriteLine($"Fibonacci({n}) = {results}");
+        long results = Fibannacci.Fibonacci(input);
+        Console.WriteLine($"Fibonacci({input}) = {results}");
 
 
     }
