@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSA_C_.Arrays
+namespace DSA_C_.Arrays 
 {
     internal class MostFrequentEle
     {
