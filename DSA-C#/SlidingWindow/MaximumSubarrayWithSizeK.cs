@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSA_C_.SlidingWindow
 {
-    public class MaximumSubarrayWithSumK
+    public class MaximumSubarrayWithSizeK
     {
         public static void Main(string[] args)
         {
