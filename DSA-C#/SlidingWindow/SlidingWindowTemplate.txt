@@ -1,0 +1,43 @@
+﻿
+// for fixed window size 
+int start = 0;
+
+for (int end = 0; end < arr.Length; end++)
+{
+    // 1️ Add current element to window calculation (optional based on problem)
+    
+    // 2️ Check if window size reached
+    if (end - start + 1 == k)
+    {
+        // 3️ Perform your logic (e.g., record max, min, count, first negative etc.)
+        
+        // 4️ Optional: remove element at start from window logic (if sum or queue)
+
+        // 5️ Slide the window
+        start++;
+    }
+}
+
+example 
+int maxSum = int.MinValue;
+int sum = 0, start = 0;
+
+for (int end = 0; end < arr.Length; end++)
+{
+    sum += arr[end];
+
+    if (end - start + 1 == k)
+    {
+        maxSum = Math.Max(maxSum, sum);
+        sum -= arr[start]; // Remove element leaving the window
+        start++;
+    }
+}
+
+| Problem Type                    | What goes inside the `if` block                           |
+| ------------------------------- | --------------------------------------------------------- |
+| Max sum subarray of size k      | Store/update max sum, subtract `arr[start]` from sum      |
+| First negative number in window | Check and record `arr[queue.Peek()]`, then slide window   |
+| Count of distinct elements      | Use HashSet/Dictionary, count distinct elements in window |
+| Max/Min in window               | Maintain deque for max/min and update result              |
+
