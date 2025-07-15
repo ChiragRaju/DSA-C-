@@ -17,9 +17,9 @@ namespace DSA_C_.Strings
         {
             if (n == 1)
                 return "1";
-            var Say = CountAndSay(n - 1);
+            var Say = CountAndSay(n - 1);// recursive call to get the previous term
             StringBuilder result = new StringBuilder();
-            for(int i = 0; i < Say.Length; i++)
+            for(int i = 0; i < Say.Length; i++) // iterate through the previous term
             {
                 int count = 1;
                 char currentChar = Say[i];
