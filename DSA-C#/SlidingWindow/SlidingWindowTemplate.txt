@@ -41,3 +41,41 @@ for (int end = 0; end < arr.Length; end++)
 | Count of distinct elements      | Use HashSet/Dictionary, count distinct elements in window |
 | Max/Min in window               | Maintain deque for max/min and update result              |
 
+
+
+
+//Longest Repeating Character Replacement 
+// Given a string s and an integer k, find the length of the longest substring that can be obtained by replacing at most k characters in s.
+//// Example: s = "AABABBA", k = 1
+//output // 4 (the substring "ABBA" can be obtained by replacing one 'A' with 'B')
+
+| Step | Left | Right | Window | charCount    | maxFreq | (right-left+1)-maxFreq | Action        | maxLength |
+| ---- | ---- | ----- | ------ | ------------ | ------- | ---------------------- | ------------- | --------- |
+| 1    | 0    | 0     | A      | { A:1 }      | 1       | 1 - 1 = 0 ≤ k          | Valid, update | 1         |
+| 2    | 0    | 1     | AA     | { A:2 }      | 2       | 2 - 2 = 0 ≤ k          | Valid, update | 2         |
+| 3    | 0    | 2     | AAB    | { A:2, B:1 } | 2       | 3 - 2 = 1 ≤ k          | Valid, update | 3         |
+| 4    | 0    | 3     | AABA   | { A:3, B:1 } | 3       | 4 - 3 = 1 ≤ k          | Valid, update | 4 ✅       |
+| 5    | 0    | 4     | AABAB  | { A:3, B:2 } | 3       | 5 - 3 = 2 > k          | Shrink left   | 4         |
+| 6    | 1    | 4     | ABAB   | { A:2, B:2 } | 3       | 4 - 2 = 2 > k          | Shrink left   | 4         |
+| 7    | 2    | 4     | BAB    | { A:1, B:2 } | 3       | 3 - 2 = 1 ≤ k          | Valid, update | 4         |
+| 8    | 2    | 5     | BABB   | { A:1, B:3 } | 3       | 4 - 3 = 1 ≤ k          | Valid, update | 4         |
+| 9    | 2    | 6     | BABBA  | { A:2, B:3 } | 3       | 5 - 3 = 2 > k          | Shrink left   | 4         |
+| 10   | 3    | 6     | ABBA   | { A:2, B:2 } | 3       | 4 - 2 = 2 > k          | Shrink left   | 4         |
+| 11   | 4    | 6     | BBA    | { A:1, B:2 } | 3       | 3 - 2 = 1 ≤ k          | Valid, update | 4 
+
+//longest substring without repeating characters
+// Given a string s, find the length of the longest substring without repeating characters.
+// Example: s = "abcabcbb"
+// Output: 3 (the substring "abc" has length 3)
+
+| Step | `r` | `s[r]` | `dict`            | `left` | `currLength` | `maxLength` | Explanation                                      |
+| ---- | --- | ------ | ----------------- | ------ | ------------ | ----------- | ------------------------------------------------ |
+| 0    | 0   | a      | { a:0 }           | 0      | 1            | 1           | First char, window is "a"                        |
+| 1    | 1   | b      | { a:0, b:1 }      | 0      | 2            | 2           | "ab"                                             |
+| 2    | 2   | c      | { a:0, b:1, c:2 } | 0      | 3            | 3           | "abc"                                            |
+| 3    | 3   | a      | { a:3, b:1, c:2 } | 1      | 3            | 3           | 'a' seen before at 0, so move `left = 0 + 1 = 1` |
+| 4    | 4   | b      | { a:3, b:4, c:2 } | 2      | 3            | 3           | 'b' seen at 1, so `left = 1 + 1 = 2`             |
+| 5    | 5   | c      | { a:3, b:4, c:5 } | 3      | 3            | 3           | 'c' seen at 2, so `left = 3`                     |
+| 6    | 6   | b      | { a:3, b:6, c:5 } | 5      | 2            | 3           | 'b' seen at 4, `left = 5`                        |
+| 7    | 7   | b      | { a:3, b:7, c:5 } | 7      | 1            | 3           | 'b' seen again, update `left` to 7               |
+|
