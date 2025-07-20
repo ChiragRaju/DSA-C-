@@ -8,6 +8,18 @@ namespace DSA_C_.SlidingWindow
 {
     public  class MaximumSubaaraySumK
     {
+        // Given an array of integers arr and an integer k, find the maximum length of a subarray that sums to k.
+        //input
+        //arr = [1, 2, 3, 4, 5], k = 9
+        //output
+        // 3 (the subarray [2, 3, 4] has a sum of 9)
+        public static void Main(string[] args)
+        {
+            int[] arr = { 1, 2, 3, 4, 5 };
+            int k = 9;
+            int result = MaxLenSubarraySumEqualsK_NonNegative(arr, k);
+            Console.WriteLine($"The maximum length of subarray with sum {k} is: {result}");
+        }
         public static int MaxLenSubarraySumEqualsK_NonNegative(int[] arr, int k)
         {
             int left = 0, sum = 0, maxLen = 0;

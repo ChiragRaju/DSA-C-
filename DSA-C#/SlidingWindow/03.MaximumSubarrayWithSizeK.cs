@@ -8,10 +8,16 @@ namespace DSA_C_.SlidingWindow
 {
     public class MaximumSubarrayWithSizeK
     {
+        //input
+        //int[] nums = { 2, 1, 5, 1, 3, 2 };
+        //int k = 3;
+        //output
+        // 9 (the subarray [5, 1, 3] has a sum of 9)
+
         public static void Main(string[] args)
         {
-            int[] nums = { 1, 2, 3, 4, 5 };
-            int k = 9;
+            int[] nums = { 2, 1, 5, 1, 3, 2 };
+            int k = 3;
             int result = MaxSubarrayWithSizeK(nums, k);
             Console.WriteLine($"The maximum length of subarray with sum {k} is: {result}");
         }
